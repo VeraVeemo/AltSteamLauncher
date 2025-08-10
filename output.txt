@@ -1,0 +1,15 @@
+[10-08-2025 01:53:33] [INFO    ] Initiliazing...
+[10-08-2025 01:53:33] [INFO    ] Setting up configuration for UI
+[10-08-2025 01:53:33] [INFO    ] Configuration complete
+[10-08-2025 01:53:33] [INFO    ] Creating tabview
+[10-08-2025 01:53:33] [INFO    ] Tabview created
+[10-08-2025 01:53:33] [INFO    ] Setting up buttons for tabview "Games"
+[10-08-2025 01:53:34] [INFO    ] Set up buttons for tabview "Games"!
+[10-08-2025 01:53:34] [INFO    ] Setting up buttons for tabview "Config"
+[10-08-2025 01:53:34] [INFO    ] Set up buttons for tabview "Config"!
+[10-08-2025 01:53:34] [INFO    ] Setting up UI for tabview "Info"
+[10-08-2025 01:53:34] [INFO    ] Set up UI for tabview "Info"!
+[10-08-2025 01:53:34] [INFO    ] Destroying all current games
+[10-08-2025 01:53:34] [INFO    ] Loaded all games and cards!
+[10-08-2025 01:53:37] [INFO    ] Destroying all current games
+[10-08-2025 01:53:37] [INFO    ] Loaded all games and cards!
