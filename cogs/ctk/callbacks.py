@@ -4,6 +4,7 @@ from PIL import Image
 from io import BytesIO
 from cogs.Steam import loadApps, launchApp, saveAppsAPI
 from cogs.Misc import log
+from cogs.FileEditor import loadConfig
 num = 0
 
 def reloadApps(button, scroll):
@@ -78,3 +79,9 @@ def resetclicks(button, reset):
     button.configure(text="Clicker")
     reset.configure(text=f"Clicks reset!")
     reset.after(2500, lambda: reset.configure(text="Reset"))
+
+def refreshInfo(text, button):
+    print(log(False, f"Refreshed info text!"))
+    text.configure(text=f"Version: 1.1\nGitHub Repo: AltSteamLauncher\nToken: {loadConfig().loadToken()}\nSteamID: {loadConfig().loadID()}\nFirst Launch: {loadConfig().loadFirst()}")
+    button.configure(text="Refreshed info!")
+    button.after(2500, lambda: button.configure(text="Refresh"))

@@ -1,7 +1,7 @@
-import requests
-from PIL import Image, ImageDraw
+from PIL import ImageDraw
 from customtkinter import CTkFont
 from cogs.ctk.callbacks import *
+from cogs.Misc import updater, budget_updater
 from cogs.FileEditor import loadConfig, saveConfig
 from io import BytesIO
 
@@ -79,8 +79,7 @@ def ctkconfig(tk):
     devtext.grid(row=0, column=0, padx=6, pady=14, sticky="nsew", columnspan=2)
 
     temp3 = requests.get("https://api.lanyard.rest/v1/users/333585549837336577").json()
-    temp3 = temp3["data"]["discord_user"]["avatar"]
-    res = requests.get(f"https://cdn.discordapp.com/avatars/333585549837336577/{temp3}")
+    res = requests.get(f"https://cdn.discordapp.com/avatars/333585549837336577/{temp3["data"]["discord_user"]["avatar"]}")
     img = Image.open(BytesIO(res.content)).convert("RGBA")
     img = img.resize((75, 75), Image.LANCZOS)
     mask = Image.new("L", img.size, 0)
@@ -114,9 +113,18 @@ def ctkconfig(tk):
     extratext = ctk.CTkLabel(top3, text="Extra", text_color="dark green", font=CTkFont("Arial", 24, "bold", underline=True), anchor="s")
     extratext.grid(row=4, column=0, padx=6, pady=14, sticky="s", columnspan=2)
 
-    text = ctk.CTkLabel(top3, text=f"Version: 1.0\nGitHub Repo: AltSteamLauncher\nToken: {loadConfig().loadToken()}\nSteamID: {loadConfig().loadID()}\nFirst Launch: {loadConfig().loadFirst()}", font=CTkFont("Arial", 12), anchor="s")
+    text = ctk.CTkLabel(top3, text=f"Version: 1.1\nGitHub Repo: AltSteamLauncher\nToken: {loadConfig().loadToken()}\nSteamID: {loadConfig().loadID()}\nFirst Launch: {loadConfig().loadFirst()}", font=CTkFont("Arial", 12), anchor="s")
     text.grid(row=5, column=0, padx=6, pady=6, sticky="s", columnspan=2)
+
+    textrefresh = ctk.CTkButton(top3, 2, 2, text="Refresh", command=lambda: refreshInfo(text, textrefresh))
+    textrefresh.grid(row=6, column=0, padx=6, pady=6, columnspan=2)
+
+    update = ctk.CTkButton(top3, 4, 4, text="Check for Updates", command=updater)
+    update.grid(row=7, column=0, padx=6, pady=6, columnspan=2)
 
     print(log(False, f"Set up UI for tabview \"Info\"!"))
 
+    print(log(False, "Initiliazing UI..."))
     reloadApps(refresh, scroll)
+    print(log(False, "UI Initialized!"))
+    budget_updater()
