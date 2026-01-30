@@ -96,7 +96,7 @@ def ctkconfig(tk):
     helperstext = ctk.CTkLabel(top3, text="Helpers", text_color="yellow", font=CTkFont("Arial", 24, "bold", underline=True), anchor="center")
     helperstext.grid(row=2, column=0, padx=6, pady=14, sticky="nsew", columnspan=2)
 
-    res = requests.get(f"https://veraveemo.uk/Files/uni.png")
+    res = requests.get(f"https://cataas.com/cat")
     img = Image.open(BytesIO(res.content)).convert("RGBA")
     img = img.resize((75, 75), Image.LANCZOS)
     mask = Image.new("L", img.size, 0)
